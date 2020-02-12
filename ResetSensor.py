@@ -13,16 +13,14 @@ def loop():
     time.sleep(5)
     GPIO.output(relayPin,False)
     print ("Relay off")
-    GPIO.cleanup()
-
     
 def destroy():
     GPIO.cleanup()                      
 
 if __name__ == '__main__':     # Program entrance
-    print ('Program is starting...')
+    print ('Reseting TFmini at pin '+str(relayPin)+'...')
     setup()
     try:
         loop()
-    except KeyboardInterrupt:   # Press ctrl-c to end the program.
+    finally:
         destroy()
