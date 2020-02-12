@@ -1,4 +1,5 @@
 import RPi.GPIO as GPIO
+import time
 
 relayPin = 32     # define the relayPin
 
@@ -6,12 +7,10 @@ def setup():
     GPIO.setmode(GPIO.BOARD)       
     GPIO.setup(relayPin, GPIO.OUT)   # set relayPin to OUTPUT mode
 
-def loop(state):
-    if state == 'off':
-        relayState = True
-    else:
-        relayState = False
-    GPIO.output(relayPin,relayState)
+def loop():
+    GPIO.output(relayPin,True)
+    time.sleep(5)
+    GPIO.output(relayPin,False)
 
     
 def destroy():
