@@ -9,8 +9,11 @@ def setup():
 
 def loop():
     GPIO.output(relayPin,True)
+    print ("Relay on")
     time.sleep(5)
     GPIO.output(relayPin,False)
+    print ("Relay off")
+    GPIO.cleanup()
 
     
 def destroy():
