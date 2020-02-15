@@ -13,7 +13,7 @@ def loop():
         with SMBus(1) as bus:
             bus.i2c_rdwr(write, read)
         data = list(read)
-        dist = (data[2]  | data[3]) << 8
+        dist = data[2]|(data[3] << 8)
         print(dist)
         time.sleep(0.5)
     
