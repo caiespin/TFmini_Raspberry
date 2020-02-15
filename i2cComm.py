@@ -14,8 +14,12 @@ def loop():
             bus.i2c_rdwr(write, read)
         data = list(read)
         dist = data[2]|(data[3] << 8)
-        print(dist)
-        time.sleep(0.5)
+        strenght = data[4]|(data[5] << 8)
+        print("\nDistance = "+str(dist))
+        print("strenght = "+str(strenght))
+        print("Trig Flag = "+str(data[0]))
+        print("Mode = "+str(data[6]))
+        time.sleep(0.01) # 100 Hz
     
 def destroy():
     GPIO.cleanup()                      
